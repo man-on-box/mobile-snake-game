@@ -9,3 +9,6 @@ export const getRandomCoord = () =>
 export const getRandomCoords = (): Coords => {
   return [getRandomCoord(), getRandomCoord()];
 };
+
+export const areMatchingCoords = (a: Coords, b: Coords) =>
+  a[0] === b[0] && a[1] === b[1];

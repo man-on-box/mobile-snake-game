@@ -14,7 +14,7 @@ export class Food {
     this.createFood();
   }
 
-  private createFood = () => (this.foodCoords = getRandomCoords());
+  public createFood = () => (this.foodCoords = getRandomCoords());
 
   public getFoodCoords = () => this.foodCoords;
 

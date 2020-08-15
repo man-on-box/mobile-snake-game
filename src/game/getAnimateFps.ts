@@ -1,20 +1,25 @@
 export const getAnimateFps = (fps: number, callback: () => void) => {
   let lastRenderTime = 0;
-  callback();
+  let runAnimation = true;
 
   const animate = (currentTime: number) => {
-    window.requestAnimationFrame(animate);
-    const secondsSinceLastRender = (currentTime - lastRenderTime) / 1000;
+    while (runAnimation) {
+      window.requestAnimationFrame(animate);
+      const secondsSinceLastRender = (currentTime - lastRenderTime) / 1000;
 
-    if (secondsSinceLastRender < 1 / fps) return;
+      if (secondsSinceLastRender < 1 / fps) return;
 
-    callback();
-    lastRenderTime = currentTime;
+      callback();
+      lastRenderTime = currentTime;
+    }
   };
 
   const startAnimation = () => {
+    callback();
     window.requestAnimationFrame(animate);
   };
 
-  return { animate, startAnimation };
+  const stopAnimation = () => (runAnimation = false);
+
+  return { animate, startAnimation, stopAnimation };
 };
