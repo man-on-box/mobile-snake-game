@@ -1,0 +1,26 @@
+{
+  "name": "my-snake-game",
+  "version": "1.0.0",
+  "description": "My Snake Game",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "npm run tscheck && parcel src/index.html",
+    "build": "npm run tscheck && parcel build src/index.html",
+    "tscheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "snake",
+    "game"
+  ],
+  "author": "man-on-box",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^9.8.6",
+    "parcel-bundler": "^1.12.4",
+    "postcss-modules": "^3.2.0",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "utils": "^0.3.1"
+  }
+}

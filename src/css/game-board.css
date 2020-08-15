@@ -1,0 +1,12 @@
+#game-board-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#game-board {
+  background-color: var(--game-bg-color);
+  border: 3px solid white;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.75);
+}
