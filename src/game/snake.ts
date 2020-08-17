@@ -56,7 +56,6 @@ export class Snake {
     this.snakeBody.some((segment) => areMatchingCoords(segment, coords));
 
   public getSnakeCoords = () => this.snakeBody;
-
   public drawSnake = () => {
     this.snakeBody.forEach(this.drawSnakeSegment);
   };
@@ -69,7 +68,6 @@ export class Snake {
 
   public moveSnake = ([x, y]: Coords) => {
     const coords: Coords = [this.snakeBody[0][0] + x, this.snakeBody[0][1] + y];
-
     const adjustedCoords = this.stayInBounds(coords);
 
     if (this.isOnSnake(adjustedCoords)) this.onSnakeDie();

@@ -3,25 +3,44 @@ import { DEFAULT_SIZE } from "../constants";
 
 export class Input {
   private inputDirection: Coords;
+  private changingDirection: boolean;
   constructor() {
     this.inputDirection = [0, -DEFAULT_SIZE];
     this.setEventListeners();
+    this.changingDirection = false;
   }
 
   public getInputDirection = (): Coords => {
+    this.changingDirection = false;
     return this.inputDirection;
   };
 
-  private goUp = () => (this.inputDirection = [0, -DEFAULT_SIZE]);
+  private changeDirection = (direction: Coords) => {
+    if (this.changingDirection) return;
+
+    this.inputDirection = direction;
+    this.changingDirection = true;
+  };
+
+  private goUp = () => {
+    if (this.isGoingDown()) return;
+    this.changeDirection([0, -DEFAULT_SIZE]);
+  };
+  private goDown = () => {
+    if (this.isGoingUp()) return;
+    this.changeDirection([0, DEFAULT_SIZE]);
+  };
+  private goLeft = () => {
+    if (this.isGoingRight()) return;
+    this.changeDirection([-DEFAULT_SIZE, 0]);
+  };
+  private goRight = () => {
+    if (this.isGoingLeft()) return;
+    this.changeDirection([DEFAULT_SIZE, 0]);
+  };
   private isGoingUp = () => this.inputDirection[1] === -DEFAULT_SIZE;
-
-  private goDown = () => (this.inputDirection = [0, DEFAULT_SIZE]);
   private isGoingDown = () => this.inputDirection[1] === DEFAULT_SIZE;
-
-  private goLeft = () => (this.inputDirection = [-DEFAULT_SIZE, 0]);
   private isGoingLeft = () => this.inputDirection[0] === -DEFAULT_SIZE;
-
-  private goRight = () => (this.inputDirection = [DEFAULT_SIZE, 0]);
   private isGoingRight = () => this.inputDirection[0] === DEFAULT_SIZE;
 
   private setEventListeners = () => {
@@ -29,27 +48,21 @@ export class Input {
       switch (e.key) {
         case "ArrowUp":
         case "w":
-          if (this.isGoingDown()) break;
           this.goUp();
           break;
         case "ArrowDown":
         case "s":
-          if (this.isGoingUp()) break;
           this.goDown();
           break;
         case "ArrowLeft":
         case "a":
-          if (this.isGoingRight()) break;
           this.goLeft();
           break;
         case "ArrowRight":
         case "d":
-          if (this.isGoingLeft()) break;
           this.goRight();
           break;
       }
     });
   };
 }
-
-// const inputDirection: Coords = [0, 0];

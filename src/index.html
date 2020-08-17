@@ -2,13 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>My Snake Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Snake</title>
   </head>
   <body>
-    <h1 class="text-center">My Snake Game</h1>
-    <p class="text-center">what is going on here</p>
     <div id="game-board-container">
-      <canvas id="game-board"></canvas>
+      <div id="game-board-wrapper">
+        <div id="score-board">
+          <p>Score: <span class="current-score">0</span></p>
+          <p>High Score: <span class="high-score">0</span></p>
+        </div>
+        <canvas id="game-board"></canvas>
+      </div>
     </div>
     <script src="./index.ts"></script>
   </body>

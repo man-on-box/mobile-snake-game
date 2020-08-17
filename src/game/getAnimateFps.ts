@@ -15,6 +15,7 @@ export const getAnimateFps = (fps: number, callback: () => void) => {
   };
 
   const startAnimation = () => {
+    runAnimation = true;
     callback();
     window.requestAnimationFrame(animate);
   };

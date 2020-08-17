@@ -12,3 +12,10 @@ export const getRandomCoords = (): Coords => {
 
 export const areMatchingCoords = (a: Coords, b: Coords) =>
   a[0] === b[0] && a[1] === b[1];
+
+export const updateAllQuerySelectors = (
+  elements: NodeListOf<HTMLElement>,
+  callback: (element: HTMLElement) => void
+) => {
+  elements.forEach(callback);
+};
