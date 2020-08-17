@@ -4,9 +4,10 @@
   "description": "My Snake Game",
   "main": "index.ts",
   "scripts": {
-    "dev": "npm run tscheck && parcel src/index.html",
-    "build": "npm run tscheck && parcel build src/index.html",
-    "tscheck": "tsc --noEmit"
+    "dev": "npm run tscheck && npm run clean && parcel src/index.html",
+    "build": "npm run tscheck && npm run clean && parcel build src/index.html",
+    "tscheck": "tsc --noEmit",
+    "clean": "rm -rf ./.cache && rm -rf ./dist"
   },
   "keywords": [
     "snake",

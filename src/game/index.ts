@@ -69,7 +69,7 @@ export class Game {
     this.canvas.width = BOARD_SIZE;
     this.canvas.height = BOARD_SIZE;
     this.objects = this.setNewGameObjects();
-    this.input = new Input();
+    this.input = new Input(this.canvas);
     this.state = { score: 0, highScore: 0, runState: "NEW_GAME" };
     this.htmlElements = {
       currentScore: document.querySelectorAll(
@@ -106,10 +106,18 @@ export class Game {
 
   public setNewGame = () => {
     drawNewGameScreen(this.ctx);
-    window.addEventListener("keypress", (e) => {
-      if (e.key === " " && this.state.runState !== "RUNNING") {
+    const handleStart = () => {
+      if (this.state.runState !== "RUNNING") {
         this.startGame();
       }
+    };
+    window.addEventListener("keypress", (e) => {
+      if (e.key === " ") {
+        handleStart();
+      }
+    });
+    window.addEventListener("click", () => {
+      handleStart();
     });
   };
 
@@ -132,7 +140,7 @@ export class Game {
     this.state.runState = "RUNNING";
     this.clearCanvas();
     this.objects = this.setNewGameObjects();
-    this.input = new Input();
+    this.input = new Input(this.canvas);
     this.animate.startAnimation();
   };
 
