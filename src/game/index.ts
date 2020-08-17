@@ -116,7 +116,7 @@ export class Game {
         handleStart();
       }
     });
-    window.addEventListener("click", () => {
+    window.addEventListener("touchend", () => {
       handleStart();
     });
   };
