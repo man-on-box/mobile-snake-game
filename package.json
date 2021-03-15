@@ -2,6 +2,7 @@
   "name": "my-snake-game",
   "version": "1.0.0",
   "description": "My Snake Game",
+  "repository": "github:man-on-box/mobile-snake-game",
   "main": "index.ts",
   "scripts": {
     "dev": "npm run tscheck && npm run clean && parcel src/index.html",
@@ -23,7 +24,6 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "is-touch-device": "^1.0.1",
-    "utils": "^0.3.1"
+    "is-touch-device": "^1.0.1"
   }
 }
